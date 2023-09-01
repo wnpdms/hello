@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.yedam.mypj.student.map.StudentMapper">
+<select id="studentSelectList" resultType="co.yedam.mypj.student.service.StudentVO">
+SELECT * FROM STUDENT
+</select>
+
+<select id="studentSelect" resultType="co.yedam.mypj.student.service.StudentVO">
+SELECT * FROM STUDENT WHERE STUDENT_NAME = #{studentName}
+</select>
+
+<insert id="studentInsert" parameterType="co.yedam.mypj.student.service.StudentVO">
+INSERT INTO STUDENT
+VALUES(#{studentName}, #{studentAge}, #{studentBirth}, #{studentNumber})
+</insert>
+
+<update id="studentUpdate" parameterType="co.yedam.mypj.student.service.StudentVO">
+UPDATE STUDENT
+	<set>
+	<if test="studentAge != null">STUDENT_AGE = #{studentAge},</if>
+	<if test="studentBirth != null">STUDENT_BIRTH = #{studentBirth},</if>
+	<if test="studentNumber != null">STUDENT_NUMBER = #{studentNumber},</if>
+	</set>
+	WHERE STUDENT_NAME = #{studentName}
+</update>
+
+<delete id="studentDelete" parameterType="co.yedam.mypj.student.service.StudentVO">
+DELETE FROM STUDENT WHERE STUDENT_NAME = #{studentName} AND STUDENT_NUMBER = #{studentNumber}
+</delete>
+</mapper>

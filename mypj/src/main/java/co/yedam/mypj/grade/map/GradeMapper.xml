@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.yedam.mypj.grade.map.GradeMapper">
+<select id="gradeSelectList" resultType="co.yedam.mypj.grade.service.GradeVO">
+SELECT * FROM GRADE
+</select>
+
+<select id="gradeSelect" resultType="co.yedam.mypj.grade.service.GradeVO">
+SELECT * FROM GRADE
+WHERE GRADE_S_NAME = #{gradeSName} AND GRADE_S_NUMBER = #{gradeSNumber}
+</select>
+
+<insert id="gradeInsert" parameterType="co.yedam.mypj.grade.service.GradeVO">
+INSERT INTO GRADE
+VALUES(#{gradeSName}, #{gradeSGrade}, #{gradeSScore}, #{gradeSNumber})
+</insert>
+
+<delete id="gradeDelete" parameterType="co.yedam.mypj.grade.service.GradeVO">
+DELETE FROM GRADE WHERE GRADE_S_NAME = #{gradeSName} AND GRADE_S_NUMBER = #{gradeSNumber}
+</delete>
+</mapper>
